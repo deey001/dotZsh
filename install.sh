@@ -1,8 +1,16 @@
 #!/bin/bash
 
 # install.sh - Install dotfiles, dependencies, vim, Zsh with Oh My Zsh, Starship, and Nerd Font
+# Note: This script checks for Zsh and runs itself with Zsh if available to ensure compatibility.
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Check if Zsh is available and re-execute with Zsh if so
+if command -v zsh >/dev/null 2>&1; then
+    if [ "$SHELL" != "$(which zsh)" ]; then
+        exec zsh "$0" "$@"
+    fi
+fi
 
 OS="$(uname)"
 if [ "$OS" = "Darwin" ]; then
@@ -72,8 +80,10 @@ fi
 # Set Zsh as default shell (optional, uncomment if desired)
 # chsh -s $(which zsh)
 
-# Source Zsh profile
-source "$HOME/.zshrc"
+# Source Zsh profile (only if in Zsh context)
+if [ -n "$ZSH_VERSION" ]; then
+  source "$HOME/.zshrc"
+fi
 
 echo "Start tmux and press prefix + I to install plugins."
 echo "Setup complete! Restart your terminal or use 'zsh' to start a Zsh session."
