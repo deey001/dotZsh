@@ -1,0 +1,3 @@
+# Exported variables for Zsh environment setup
+export PATH="$PATH:$HOME/bin"  # Add user bin directory to PATH
+export EDITOR=vim              # Set default editor to Vim

@@ -1,21 +1,21 @@
-# Dotfiles
+# dotZsh
 
 ## Files
-- .bash_aliases: Custom aliases (compatible with Zsh if sourced).
-- .bash_exports: Exported environment variables (compatible with Zsh).
-- .bash_profile: Login shell config (compatible with Zsh).
-- .bash_wrappers: Custom function wrappers (compatible with Zsh).
-- .zshrc: Main Zsh config with Oh My Zsh and plugins.
+- .zsh_aliases: Custom aliases for common commands.
+- .zsh_exports: Exported environment variables.
+- .zprofile: Login shell config for Zsh.
+- .zshrc: Zsh config with Oh My Zsh and modern prompt.
 - .tmux.conf: Tmux config with keybinds, mouse, vi mode, and Dracula plugin.
 - .vimrc: Basic Vim configuration.
-- install.sh: Installs dependencies, Zsh, Oh My Zsh, plugins, fonts, and symlinks files.
-- uninstall.sh: Removes symlinks and Oh My Zsh.
+- install.sh: Installs dependencies, fonts, vim, Zsh with Oh My Zsh, Starship, and symlinks files.
+- uninstall.sh: Removes symlinks.
+- .config/starship.toml: Starship prompt configuration.
 
 ## Installation
-1. Clone: git clone https://github.com/deey001/dotfiles.git ~/dotfiles
-2. cd ~/dotfiles && ./install.sh
-3. Log out and log back in (or run 'zsh') to use Zsh.
-4. tmux: prefix + I for plugins
+1. Clone: git clone https://github.com/deey001/dotZsh.git ~/dotZsh
+2. cd ~/dotZsh && ./install.sh
+3. tmux: prefix + I for plugins
+4. (Optional) Set Zsh as default shell: uncomment 'chsh -s $(which zsh)' in install.sh and rerun.
 
 ## Uninstallation
 ./uninstall.sh
