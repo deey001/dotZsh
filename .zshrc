@@ -3,7 +3,7 @@
 # Path to Oh My Zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set theme (use a simple theme, customizable later; disabled with Starship)
+# Set theme (disabled with Starship)
 ZSH_THEME=""
 
 # Enable command auto-correction
@@ -31,7 +31,20 @@ if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
 fi
 
-# Custom prompt function (mirroring Bash style with Nerd Font, overridden by Starship)
+# Custom numpad bindings for Zsh (adjust sequences with Ctrl-v if needed)
+bindkey -s "^[Op" "0"  # Numpad 0
+bindkey -s "^[Oq" "1"  # Numpad 1
+bindkey -s "^[Or" "2"  # Numpad 2
+bindkey -s "^[Os" "3"  # Numpad 3
+bindkey -s "^[Ot" "4"  # Numpad 4
+bindkey -s "^[Ou" "5"  # Numpad 5
+bindkey -s "^[Ov" "6"  # Numpad 6
+bindkey -s "^[Ow" "7"  # Numpad 7
+bindkey -s "^[Ox" "8"  # Numpad 8
+bindkey -s "^[Oy" "9"  # Numpad 9
+bindkey -s "^[OM" "\n" # Numpad Enter
+
+# Custom prompt function (mirrored Bash style, overridden by Starship)
 function parse_git_branch() {
   local branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
   if [ -n "$branch" ]; then
@@ -46,7 +59,3 @@ eval "$(starship init zsh)"
 
 # Enable Zsh completion
 autoload -Uz compinit && compinit
-
-# Source additional Zsh configuration files
-[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
-[ -f ~/.zsh_exports ] && source ~/.zsh_exports
